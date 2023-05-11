@@ -25,15 +25,15 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="System.Net.Http" />
     <None Remove="Plugin.BluetoothClassic" />
-    <None Remove="Views\Components\" />
     <None Remove="Views\Pages\Tabs\" />
     <None Remove="Modelo\Database\" />
     <None Remove="Modelo\Database\Model\" />
+    <None Remove="Views\Componentes\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Components\" />
     <Folder Include="Views\Pages\Tabs\" />
     <Folder Include="Modelo\Database\" />
     <Folder Include="Modelo\Database\Model\" />
+    <Folder Include="Views\Componentes\" />
   </ItemGroup>
 </Project>

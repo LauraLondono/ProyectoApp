@@ -28,12 +28,14 @@ namespace demo_santiago
 
             datePickerInit = new DatePicker
             {
-                Date = DateTime.Today.AddMonths(-3)
+                Date = DateTime.Today.AddMonths(-3),
+                TextColor = Color.Black
             };
 
             datePickerEnd = new DatePicker
             {
-                Date = DateTime.Today
+                Date = DateTime.Today,
+                TextColor = Color.Black
             };
 
             buttonFilter = new Button

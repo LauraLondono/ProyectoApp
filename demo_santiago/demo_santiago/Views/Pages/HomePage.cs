@@ -36,6 +36,7 @@ namespace demo_santiago
 
         void CreateViews()
         {
+            BackgroundColor = Color.White;
             deviceList = new ObservableCollection<BluetoothDeviceModel>();
 
             principalView = new RelativeLayout();
