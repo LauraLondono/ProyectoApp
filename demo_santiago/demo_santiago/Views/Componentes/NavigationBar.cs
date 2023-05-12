@@ -10,17 +10,13 @@ namespace demo_santiago
 {
     public class NavigationBar : RelativeLayout
     {
-        //Label textoTitulo;
-        Image imagenInicial, imagenFinal, imagenLogo;
+        Image PrincipalLogo;
         bool click = false;
-        public Label textoTitulo;
         public Button buttonBluetooth;
-        ImageSource RutaPrimeraIcono, RutaSegundoIcono;
-        public NavigationBar(ImageSource rutaPrimerIcono = null, string titulo = "", ImageSource rutaSegundoIcono = null)
+        ImageSource path_principal_logo;
+        public NavigationBar(ImageSource path_logo = null, string titulo = "", ImageSource rutaSegundoIcono = null)
         {
-            RutaPrimeraIcono = rutaPrimerIcono;
-            //textoTitulo = titulo;
-            RutaSegundoIcono = rutaSegundoIcono;
+            path_principal_logo = path_logo;
             CrearVistas();
             AgregarVistas();
             AgregarEventosControles();
@@ -28,30 +24,16 @@ namespace demo_santiago
 
         void CrearVistas()
         {
-            textoTitulo = new Label();
-            buttonBluetooth = new Button();
-            //textoTitulo = new Label()
-            //{
-            //    Text = Titulo,
-            //    TextColor = colorTextoTitulo,
-            //    FontSize = _h(24),
-            //    VerticalTextAlignment = TextAlignment.Center,
-            //    HorizontalTextAlignment = TextAlignment.Center
-            //};
-
-            //imagenLogo = new Image
-            //{
-            //    Source = Images.Logo_Klaxen
-            //};
-
-            imagenInicial = new Image
+            buttonBluetooth = new Button
             {
-                Source = (RutaPrimeraIcono == null) ? "" : RutaPrimeraIcono,
+                CornerRadius = (int) (gb.screenHeight * 0.5),
+                BackgroundColor = Color.Red
             };
 
-            imagenFinal = new Image
+            PrincipalLogo = new Image
             {
-                Source = (RutaSegundoIcono == null) ? "" : RutaSegundoIcono,
+                Source = (path_principal_logo == null) ? "" : path_principal_logo,
+                Aspect = Aspect.AspectFit
             };
 
             BackgroundColor = gb.mainColor;
@@ -59,23 +41,6 @@ namespace demo_santiago
 
         void AgregarEventosControles()
         {
-            Core.addClick(imagenInicial, ClickAtras_Tapped);
-        }
-
-        private async void ClickAtras_Tapped(object sender, EventArgs e)
-        {
-            Core.scaleOnTap(imagenInicial);
-            if (click) return;
-            click = true;
-
-            if (RutaPrimeraIcono == null)
-                return;
-
-            Page paginaActual = ((NavigationPage)Application.Current.MainPage).Navigation.NavigationStack[((NavigationPage)Application.Current.MainPage).Navigation.NavigationStack.Count - 1];
-
-            await paginaActual.Navigation.PopAsync();
-
-            click = false;
         }
 
         void AgregarVistas()
@@ -84,10 +49,19 @@ namespace demo_santiago
             if (Device.RuntimePlatform == Device.iOS)
                 spacing = gb.deviceCarrierSpacing;
 
-            //addChild(this, textoTitulo, _w(56), _h(spacing), _w(267), _h(56));
-            //addChild(this, imagenLogo, _w(234), _h(spacing), _w(124), _h(44));
-            addChild(this, imagenInicial, _w(0), _h(spacing), _w(56), _h(56));
-            addChild(this, imagenFinal, _w(321), _h(spacing), _w(56), _h(56));
+            Children.Add(PrincipalLogo,
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.074; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.144; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.293; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.650; })
+            );
+
+            Children.Add(buttonBluetooth,
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.816; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.265; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.101; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.101; })
+            );
         }
     }
 }

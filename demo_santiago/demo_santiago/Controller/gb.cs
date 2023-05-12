@@ -136,8 +136,8 @@ namespace demo_santiago
             textColorEntries = Color.Black;
             titleColor = Color.White;
             buttonsBg = Color.Gray.MultiplyAlpha(0.5);
-            mainColor = Color.FromHex("#AFCDFF");
-            mainColorBlack = Color.FromHex("#8FB7FF");
+            mainColor = Color.FromHex("#39A0ED");
+            mainColorBlack = Color.FromHex("#176299");
             textsColor = Color.FromHex("#042551");
             textsColorNoFoud = Color.FromHex("#ABABAB");
         }

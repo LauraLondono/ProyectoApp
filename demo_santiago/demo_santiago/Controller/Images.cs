@@ -17,5 +17,6 @@ namespace demo_santiago
         public static ImageSource medal_gold_icon { get; } = ImageSource.FromFile("medal_gold_icon.png");
         public static ImageSource medal_gray_icon { get; } = ImageSource.FromFile("medal_gray_icon.png");
         public static ImageSource medal_orange_icon { get; } = ImageSource.FromFile("medal_orange_icon.png");
+        public static ImageSource logo_principal_icon { get; } = ImageSource.FromFile("logo_principal.png");
     }
 }

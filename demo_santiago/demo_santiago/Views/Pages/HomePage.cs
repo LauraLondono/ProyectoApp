@@ -47,7 +47,7 @@ namespace demo_santiago
 
             viewAbout = new ViewAbout();
 
-            navigationBar = new NavigationBar(null,"Mensajes");
+            navigationBar = new NavigationBar(Images.logo_principal_icon,"");
 
             boxMessages = new BoxMenu("Mensajes", Images.messages_icon, gb.mainColorBlack);
 
@@ -64,7 +64,7 @@ namespace demo_santiago
             if (Device.RuntimePlatform == Device.iOS)
                 spacing = gb.deviceCarrierSpacing;
 
-            addChild(principalView, navigationBar, _w(0), _h(spacing), _w(375), _h(56));
+            addChild(principalView, navigationBar, _w(0), _h(spacing), _w(375), _h(83));
             addChild(principalView, boxMessages, _w(0), _h(spacing + 597), _w(125), _h(70));
             addChild(principalView, boxReports, _w(125), _h(spacing + 597), _w(125), _h(70));
             addChild(principalView, boxAbout, _w(250), _h(spacing + 597), _w(125), _h(70));
@@ -87,7 +87,7 @@ namespace demo_santiago
                     viewMessages.IsVisible = true;
                     viewReports.IsVisible = false;
                     viewAbout.IsVisible = false;
-                    navigationBar.textoTitulo.Text = "Mensajes";
+                    //navigationBar.textoTitulo.Text = "Mensajes";
                 }
             });
 
@@ -101,7 +101,7 @@ namespace demo_santiago
                     viewMessages.IsVisible = false;
                     viewReports.IsVisible = true;
                     viewAbout.IsVisible = false;
-                    navigationBar.textoTitulo.Text = "Reportes";
+                    //navigationBar.textoTitulo.Text = "Reportes";
                 }
             });
 
@@ -114,7 +114,7 @@ namespace demo_santiago
                     viewMessages.IsVisible = false;
                     viewReports.IsVisible = false;
                     viewAbout.IsVisible = true;
-                    navigationBar.textoTitulo.Text = "Acerca de";
+                    //navigationBar.textoTitulo.Text = "Acerca de";
                 }
             });
 
