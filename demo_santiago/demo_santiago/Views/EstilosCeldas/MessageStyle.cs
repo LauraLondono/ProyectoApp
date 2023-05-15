@@ -13,6 +13,7 @@ namespace demo_santiago
     {
         StackLayout viewPrincipal,viewLabel;
         Label message,dateRow;
+        public Image icon_trash;
 
         public MessageStyle()
         {
@@ -26,8 +27,16 @@ namespace demo_santiago
             {
                 Orientation = StackOrientation.Horizontal,
                 VerticalOptions = LayoutOptions.Center,
-                Padding = new Thickness(10, 0, 0, 0),
-                Spacing = 2
+                Padding = new Thickness(_w(32), 0, _w(32), 0),
+                Spacing = 2,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+            };
+
+            icon_trash = new Image
+            {
+                Aspect = Aspect.AspectFit,
+                Source = Images.logo_icon_trash,
+                HorizontalOptions = LayoutOptions.EndAndExpand
             };
 
             viewLabel = new StackLayout
@@ -38,9 +47,10 @@ namespace demo_santiago
 
             message = new Label
             {
-                TextColor = gb.textsColor,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(14),
-                VerticalTextAlignment = TextAlignment.Center
+                VerticalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold
             };
 
             dateRow = new Label
@@ -65,6 +75,7 @@ namespace demo_santiago
             viewLabel.Children.Add(dateRow);
 
             viewPrincipal.Children.Add(viewLabel);
+            viewPrincipal.Children.Add(icon_trash);
 
             View = viewPrincipal;
         }

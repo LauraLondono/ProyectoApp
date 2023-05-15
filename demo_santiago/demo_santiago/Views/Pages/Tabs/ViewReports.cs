@@ -13,6 +13,7 @@ namespace demo_santiago
         public Button buttonFilter;
         Label labelTitleChart, labelTitleMoreUsed;
         public StackLayout stackWords;
+        Label message_title, subtitleReport;
         public ViewReports()
         {
             CreateViews();
@@ -22,8 +23,26 @@ namespace demo_santiago
 
         void CreateViews()
         {
+            message_title = new Label
+            {
+                Text = "Reportes",
+                TextColor = gb.mainColorBlack,
+                FontSize = _h(24),
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold
+            };
+
+            subtitleReport = new Label
+            {
+                HorizontalTextAlignment = TextAlignment.Center,
+                Text = "Elige un rango de fecha dentro de los últimos 3 meses",
+                TextColor = gb.mainColorBlack,
+                FontSize = _h(14)
+            };
+
             chart = new Microcharts.Forms.ChartView();
-            barChart = new BarChart();
+            barChart = new BarChart ();
             stackWords = new StackLayout();
 
             datePickerInit = new DatePicker
@@ -52,7 +71,8 @@ namespace demo_santiago
             {
                 Text = "Número de frases",
                 TextColor = gb.textsColor,
-                FontSize = _h(14)
+                FontSize = _h(14),
+                FontAttributes = FontAttributes.Bold
             };
 
             labelTitleMoreUsed = new Label
@@ -61,6 +81,7 @@ namespace demo_santiago
                 Text = "Palabras más\nusadas",
                 TextColor = gb.textsColor,
                 FontSize = _h(14),
+                FontAttributes = FontAttributes.Bold
             };
 
             IsVisible = false;
@@ -69,39 +90,52 @@ namespace demo_santiago
         void AddViews()
         {
             chart.Chart = barChart;
+
+            Children.Add(message_title,
+                                 Constraint.RelativeToParent((p) => { return 0; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.046; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width; })
+            );
+
             Children.Add(chart,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.050; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.470; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.648; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.453; }),
                                  Constraint.RelativeToParent((p) => { return p.Height * 0.289; })
             );
 
             Children.Add(labelTitleChart,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.109; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.360; })
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.533; })
             );
-            
+
+            Children.Add(subtitleReport,
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.194; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.141; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width * 0.610; })
+            );
+
             Children.Add(labelTitleMoreUsed,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.533; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.360; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.533; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.373; })
             );
 
             Children.Add(datePickerInit,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.082; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.080; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.264; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.392; })
             );
 
             Children.Add(datePickerEnd,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.528; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.080; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.264; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.392; })
             );
 
             Children.Add(buttonFilter,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.301; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.205; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.395; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.392; })
             );
 
@@ -109,7 +143,7 @@ namespace demo_santiago
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.650; }),
                                  Constraint.RelativeToParent((p) => {
                                      double calculated = gb.CalculateHeighViewControl(labelTitleMoreUsed);
-                                     return (p.Height * 0.034) + calculated;
+                                     return (p.Height * 0.044) + calculated;
                                  }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.314; })
             );

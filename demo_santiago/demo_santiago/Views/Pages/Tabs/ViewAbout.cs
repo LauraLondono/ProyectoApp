@@ -6,7 +6,7 @@ namespace demo_santiago
 {
     public class ViewAbout : RelativeLayout
     {
-        Label principalText, descriptionText, contactanosText, cellNumber, cellEmail;
+        Label principalText, descriptionText, contactanosText, cellNumber, cellEmail, message_title;
         Image propuse_icon, whapp_icon, email_icon;
         public ViewAbout()
         {
@@ -17,10 +17,20 @@ namespace demo_santiago
 
         void CreateViews()
         {
+            message_title = new Label
+            {
+                Text = "Acerca de ComunicaTEA",
+                TextColor = gb.mainColorBlack,
+                FontSize = _h(24),
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold
+            };
+
             principalText = new Label
             {
                 Text = "Propósito",
-                TextColor = Color.Black,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(18),
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.Bold,
@@ -29,7 +39,7 @@ namespace demo_santiago
             descriptionText = new Label
             {
                 Text = "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-                TextColor = Color.Black,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(14),
                 VerticalTextAlignment = TextAlignment.Center,
             };
@@ -37,7 +47,7 @@ namespace demo_santiago
             contactanosText = new Label
             {
                 Text = "Contáctanos",
-                TextColor = Color.Black,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(18),
                 VerticalTextAlignment = TextAlignment.Center,
                 FontAttributes = FontAttributes.Bold,
@@ -46,7 +56,7 @@ namespace demo_santiago
             cellNumber = new Label
             {
                 Text = "123-456-789",
-                TextColor = Color.Black,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(16),
                 VerticalTextAlignment = TextAlignment.Center,
             };
@@ -54,7 +64,7 @@ namespace demo_santiago
             cellEmail = new Label
             {
                 Text = "testmail@gmail.com",
-                TextColor = Color.Black,
+                TextColor = gb.mainColorBlack,
                 FontSize = _h(16),
                 VerticalTextAlignment = TextAlignment.Center,
             };
@@ -79,15 +89,21 @@ namespace demo_santiago
 
         void AddViews()
         {
+            Children.Add(message_title,
+                                 Constraint.RelativeToParent((p) => { return 0; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.046; }),
+                                 Constraint.RelativeToParent((p) => { return p.Width; })
+            );
+
             Children.Add(principalText,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.136; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.076; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.206; }),
                                  Constraint.RelativeToParent((p) => { return p.Width; })
             );
 
             Children.Add(propuse_icon,
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.042; }),
-                                 Constraint.RelativeToParent((p) => { return p.Height * 0.072; }),
+                                 Constraint.RelativeToParent((p) => { return p.Height * 0.202; }),
                                  Constraint.RelativeToParent((p) => { return p.Width * 0.082; })
             );
 

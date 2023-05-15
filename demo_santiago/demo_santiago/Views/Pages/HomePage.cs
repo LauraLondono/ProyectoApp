@@ -65,12 +65,12 @@ namespace demo_santiago
                 spacing = gb.deviceCarrierSpacing;
 
             addChild(principalView, navigationBar, _w(0), _h(spacing), _w(375), _h(83));
+            addChild(principalView, viewMessages, _w(0), _h(spacing + 83), _w(375), _h(425));
+            addChild(principalView, viewReports, _w(0), _h(spacing + 83), _w(375), _h(425));
+            addChild(principalView, viewAbout, _w(0), _h(spacing + 83), _w(375), _h(425));
             addChild(principalView, boxMessages, _w(0), _h(spacing + 597), _w(125), _h(70));
             addChild(principalView, boxReports, _w(125), _h(spacing + 597), _w(125), _h(70));
             addChild(principalView, boxAbout, _w(250), _h(spacing + 597), _w(125), _h(70));
-            addChild(principalView, viewMessages, _w(0), _h(spacing + 76), _w(375), _h(521));
-            addChild(principalView, viewReports, _w(0), _h(spacing + 76), _w(375), _h(521));
-            addChild(principalView, viewAbout, _w(0), _h(spacing + 76), _w(375), _h(521));
             addChild(principalView, bLoading, _w(0), _h(spacing), _w(375), _h(667));
 
             Content = principalView;
@@ -230,6 +230,7 @@ namespace demo_santiago
         {
             List<Messages_DB> messages = await data_access.GetAllMessages();
             viewMessages.messages.Clear();
+
             foreach (Messages_DB message in messages)
             {
                 viewMessages.messages.Add(message);
